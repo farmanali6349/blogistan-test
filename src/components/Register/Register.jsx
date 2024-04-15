@@ -20,8 +20,6 @@ function Register() {
             const userData = await authService.createAccount(registerData);
 
             if(userData) {
-                console.log('Account Created.');
-                console.log(userData);
                 navigate("/login")
             }
 

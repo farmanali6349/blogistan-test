@@ -20,14 +20,12 @@ function Login() {
         setErrors("");
 
         const {email, password} = loginData;
-        console.log(email, password)
 
         try {
             const session = await authService.login({email, password});
 
             if (session) {
                 const userData = await authService.getCurrentUser();
-                console.log("User Data: ", userData)
 
                 if (userData) {
                     dispatch(authLogin(userData))

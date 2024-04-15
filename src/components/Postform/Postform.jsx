@@ -56,9 +56,6 @@ function Postform({ post }) {
 
         if (post) {
 
-            console.log("Data Received", data)
-            console.log("User Data", userData)
-
             if (data.image) {
                 await databaseService.deleteFile(post.featuredImage);
             }
@@ -66,37 +63,38 @@ function Postform({ post }) {
             if (post.$id !== data.slug) {
                 try {
                     await databaseService.deletePost(post.$id)
-                    .catch((err) => console.log("post is not deleted."))
+                        .catch((err) => console.log("post is not deleted."))
                 } catch (error) {
                     console.log("Previous post is not deleted.")
                 }
-                
+
                 const dbPost = await databaseService.createPost({ ...data, userId: userData.$id })
-                if(dbPost) {
+                if (dbPost) {
                     console.log(`Updated with new post creation.`)
                     navigate(`/post/${dbPost.$id}`)
                 }
             } else {
                 if (data.image) {
                     const imageFile = await databaseService.uploadFile(data.image[0]);
-                    
+
                     if (imageFile) {
                         data.featureImage = imageFile.$id;
                     }
                 }
-                
-                const dbPost = await databaseService.updatePost({ ...data, userId: userData.$id})
-                
+
+
+                const dbPost = await databaseService.updatePost({ ...data, userId: userData.$id })
+
+
                 if (dbPost) {
-                    console.log(`Updated post.`)
+                    console.log(`Post Updated.`)
                     navigate(`/post/${dbPost.$id}`)
                 }
             }
 
         } else {
             // Create Post
-            console.log("Create Post From Data: ", data)
-            if(data.image) {
+            if (data.image) {
                 const imageFile = data.image[0] ? await databaseService.uploadFile(data.image[0]) : null;
                 if (imageFile) {
                     data.featuredImage = imageFile.$id;
@@ -107,7 +105,6 @@ function Postform({ post }) {
 
             if (dbPost) {
                 navigate(`/post/${dbPost.$id}`)
-                console.log("DB Post", dbPost);
             }
         }
     }
@@ -120,7 +117,7 @@ function Postform({ post }) {
                 label="Title"
                 placeholder="Enter Post Title"
                 className="input stroke"
-                error= {errors && errors.title}
+                error={errors && errors.title}
                 onInput={(e) => setValue("slug", createSlug(e.target.value))}
                 {...register("title", {
                     required: true
@@ -132,7 +129,7 @@ function Postform({ post }) {
                 label="Slug"
                 placeholder=""
                 className="input stroke"
-                error= {errors && errors.slug}
+                error={errors && errors.slug}
                 onInput={(e) => setValue("slug", createSlug(e.target.value))}
                 {...register("slug", {
                     required: true,
@@ -162,9 +159,9 @@ function Postform({ post }) {
                 placeholder="Enter source of image e.g from Pixabay"
                 className="input stroke"
                 label="Featured Image (Image Source)"
-                error= {errors && errors.featuredImageSource}
+                error={errors && errors.featuredImageSource}
                 onInput={(e) => setImageSource(e.target.value)}
-                {...register("featuredImageSource", {required: false})}
+                {...register("featuredImageSource", { required: false })}
             />
 
             {imageSource && <img src={imageSource} width="200px" height="200px" className='stroke' />}
