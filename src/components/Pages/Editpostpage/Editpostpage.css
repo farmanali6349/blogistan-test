@@ -1,0 +1,7 @@
+.edit-post-page .main-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 64px 0;
+}

@@ -1,0 +1,23 @@
+.login-form {
+    background-color: var(--bg-color02);
+    padding: 48px 32px;
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 16px
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.login-form p a {
+    text-decoration: underline;
+    transition: 0.3s color;
+}
+
+.login-form p a:hover {
+    color: var(--bg-button);
+}

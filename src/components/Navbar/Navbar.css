@@ -1,0 +1,24 @@
+.primary-navbar ul {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+
+}
+
+.primary-navbar ul li button.nav-item {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #f1f1f1;
+    cursor: pointer;
+    padding: 0px;
+    margin: 0px;
+    font-size: 1em;
+    transition: 0.3s color;
+}
+
+.primary-navbar ul li button.nav-item:hover {
+    color: var(--bg-button);
+}

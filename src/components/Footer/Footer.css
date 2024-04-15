@@ -1,0 +1,13 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 0px;
+    border-top: 1px solid #636363;
+}
+
+footer p {
+    text-align: center;
+    font-size: 1em;
+
+}

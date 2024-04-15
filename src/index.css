@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'Clash Display';
+  src: url(assets/fonts/ClashDisplay/ClashDisplay-Variable.ttf);
+}
+
+@font-face {
+  font-family: 'Archivo';
+  src: url(assets/fonts/Archivo/Archivo-Variable.ttf);
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  background-color: #121212;
+  color: #e1e1e1;
+  font-family: 'Archivo';
+  font-size: 1rem;
+}
+
+:root {
+  --bg-color01: #121212;
+  --bg-color02: #1e1e1e;
+  --text-color01: #e1e1e1;
+  --text-color02: #a1a1a1;
+  --bg-button: #c38fff;
+  --bg-button-hover: #a75bff;
+  --text-button: #000;
+  --stroke-color: #636363;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Clash Display';
+  font-weight: 500;
+}
+
+.stroke {
+  border-radius: 10px;
+  border: 1px solid var(--stroke-color);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+
+}
+
+.page-title {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 24px;
+}
