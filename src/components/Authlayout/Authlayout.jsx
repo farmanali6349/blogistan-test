@@ -13,7 +13,6 @@ function Authlayout({children, authentication = true}) {
             navigate("/login")
         } else if(!authentication && authStatus !== authentication){
             navigate("/")
-            console.log("Going to Homepage")
         }
 
         setLoader(false);

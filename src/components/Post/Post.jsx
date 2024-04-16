@@ -10,16 +10,16 @@ function Post() {
     const { slug } = useParams();
     const [post, setPost] = useState({});
     const [loading, setLoading] = useState(true);
-    const userData = useSelector(state => state.userData);
+    const [userData, setUserData] = useState(useSelector(state => state.userData))
     const navigate = useNavigate();
 
     useEffect(() => {
+
         if (slug) {
             databaseService.getPost(slug)
                 .then((post) => setPost(post))
                 .catch((err) => console.log("post not found", err))
                 .finally(() => setLoading(false))
-
         }
     }, [slug])
 
@@ -59,7 +59,7 @@ function Post() {
                                             </div>
                                         </>
                                     )
-                                    : console.log("Post not found.")}
+                                    : null}
                             </>
                         )
                         : (<h4 className='no-post-para'> Post Not Available </h4>)}

@@ -12,10 +12,7 @@ function Posts() {
         databaseService.getPosts([])
             .then((posts) => setAllposts(posts.documents))
             .catch((err) => console.log("Error :: Get Post ::", err))
-            .finally(() => {
-                setLoading(false)
-                console.log("Finaly Loading Stop")
-            })
+            .finally(() => setLoading(false))
 
     }, [])
 

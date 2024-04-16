@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import authService from '../../appwrite/auth'
 import { login as authLogin } from '../../store/features/authSlice'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from "react-hook-form"
 import { Input, Button, Logo } from "../index"
 import "./Login.css"
@@ -17,24 +17,16 @@ function Login() {
 
 
     const login = async (loginData) => {
-        setErrors("");
+        authService.login({ ...loginData })
+            .then((session) => {
 
-        const {email, password} = loginData;
+                console.log("Logged In")
 
-        try {
-            const session = await authService.login({email, password});
+                authService.getCurrentUser()
+                    .then((userData) => dispatch(authLogin({ userData })))
+                    .catch((err) => console.log("Error Occured while fetching user data after login."))
 
-            if (session) {
-                const userData = await authService.getCurrentUser();
-
-                if (userData) {
-                    dispatch(authLogin(userData))
-                    navigate("/")
-                }
-            }
-        } catch (error) {
-            setErrors(error)
-        }
+            }).catch((err) => console.log("Error Occured During Login :: Error -> ", err))
 
     }
 
@@ -50,7 +42,7 @@ function Login() {
                     required: true,
                     validate: {
                         matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                        "Email address must be a valid address"
+                            "Email address must be a valid address"
                     }
                 })}
 

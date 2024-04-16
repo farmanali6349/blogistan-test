@@ -54,6 +54,10 @@ function Postform({ post }) {
 
     const handlePostform = async (data) => {
 
+        if(data.featuredImageSource.length === 0) {
+           data.featuredImageSource = "https://cdn.pixabay.com/photo/2024/03/13/19/06/ai-generated-8631634_640.jpg";
+        }
+
         if (post) {
 
             if (data.image) {
@@ -100,7 +104,6 @@ function Postform({ post }) {
                     data.featuredImage = imageFile.$id;
                 }
             }
-
             const dbPost = await databaseService.createPost({ ...data, userId: userData.$id })
 
             if (dbPost) {

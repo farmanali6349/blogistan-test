@@ -1,20 +1,22 @@
 import { Button } from "../index"
 import React from 'react'
 import authService from "../../appwrite/auth"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { logout } from "../../store/features/authSlice"
 import "./Logout.css"
+import { useNavigate } from "react-router-dom"
 const Logout = () => {
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const logoutHandler = () => {
-    authService.logout()
-      .then(() => {
-        dispatch(logout())
-      })
-
-    console.log("logged Out")
+  const logoutHandler = async () => {
+    await authService.logout()
+    .then(() => {
+      dispatch(logout())
+      navigate('/')
+      console.log("logged Out")
+    }).catch((err)=> console.log("Error Occured During Logout :: Error -> ", err))
   }
 
   return (
