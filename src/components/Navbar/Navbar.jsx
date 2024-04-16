@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useSelector } from "react-redux"
 import "./Navbar.css"
 import { useNavigate } from 'react-router-dom';
 import {Logout} from '../index';
+import {close} from "../../assets/icons/index"
 
-function Navbar() {
+function Navbar({
+    isClose,
+    isMobile,
+    setIsClose
+}) {
 
     const authStatus = useSelector(state => state.status);
     const navigate = useNavigate();
@@ -42,7 +47,8 @@ function Navbar() {
         navigate(url);
     }
     return (
-        <nav className='primary-navbar'>
+        <nav className={`primary-navbar ${isMobile ? `mobile-nav ${isClose ? "close" : "" }` : ""}`}>
+            {isMobile ? <img src={close} alt="close-icon" onClick={() => setIsClose(()=> true)}/> : null}
             <ul>
                 {navItems.map((item)=> {
                     if(item.active) {

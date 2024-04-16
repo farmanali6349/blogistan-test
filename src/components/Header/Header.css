@@ -1,6 +1,8 @@
 header {
     border-bottom: 1px solid #636363;
+    position: relative;
 }
+
 header .main-container {
     display: flex;
     align-items: center;
@@ -12,5 +14,11 @@ header a {
     font-size: 1.4em;
     color: var(--text-color01);
     text-decoration: none;
+    cursor: pointer;
+}
+
+header img {
+    width: 20px;
+    height: 20px;
     cursor: pointer;
 }

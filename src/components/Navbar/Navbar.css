@@ -22,3 +22,32 @@
 .primary-navbar ul li button.nav-item:hover {
     color: var(--bg-button);
 }
+
+.primary-navbar.mobile-nav{
+    background-color: var(--bg-color02);
+    position: fixed;
+    right: 0px;
+    top: 0;
+    width: 200px;
+    padding: 24px;
+    transition: right 0.3s;
+}
+
+.primary-navbar.mobile-nav ul {
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin-top: 32px;
+}
+
+.primary-navbar.mobile-nav.close {
+    right: -203px;
+}
+
+
+.primary-navbar.mobile-nav img {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
