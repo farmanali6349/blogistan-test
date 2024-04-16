@@ -43,9 +43,7 @@ function Navbar({
         
     ]
 
-    const goToLink = (url) => {
-        navigate(url);
-    }
+
     return (
         <nav className={`primary-navbar ${isMobile ? `mobile-nav ${isClose ? "close" : "" }` : ""}`}>
             {isMobile ? <img src={close} alt="close-icon" onClick={() => setIsClose(()=> true)}/> : null}
@@ -54,7 +52,7 @@ function Navbar({
                     if(item.active) {
                         return (
                             <li key={item.name}>
-                                <button onClick={()=> goToLink(item.slug)} className='nav-item'>
+                                <button onClick={()=> {navigate(item.slug); setIsClose(()=> true)}} className='nav-item'>
                                     {item.name}
                                 </button>
                             </li>

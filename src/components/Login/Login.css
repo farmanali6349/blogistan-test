@@ -21,3 +21,15 @@
 .login-form p a:hover {
     color: var(--bg-button);
 }
+
+@media screen and (max-width: 480px) {
+    .login-form {
+        width: 300px;
+    }    
+}
+
+@media screen and (max-width: 380px) {
+    .login-form {
+        width: 250px;
+    }    
+}

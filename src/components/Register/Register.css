@@ -21,3 +21,15 @@
 .register-form p a:hover {
     color: var(--bg-button);
 }
+
+@media screen and (max-width: 480px) {
+    .register-form {
+        width: 300px;
+    }    
+}
+
+@media screen and (max-width: 380px) {
+    .register-form {
+        width: 250px;
+    }    
+}
