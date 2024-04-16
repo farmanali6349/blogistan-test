@@ -120,7 +120,7 @@ function Postform({ post }) {
                 label="Title"
                 placeholder="Enter Post Title"
                 className="input stroke"
-                error={errors && errors.title}
+                error={errors.title && errors.title.message}
                 onInput={(e) => setValue("slug", createSlug(e.target.value))}
                 {...register("title", {
                     required: true
@@ -132,7 +132,7 @@ function Postform({ post }) {
                 label="Slug"
                 placeholder=""
                 className="input stroke"
-                error={errors && errors.slug}
+                error={errors.slug && errors.slug.message}
                 onInput={(e) => setValue("slug", createSlug(e.target.value))}
                 {...register("slug", {
                     required: true,
@@ -158,11 +158,11 @@ function Postform({ post }) {
             />
 
             <Input
-                type="url"
+                type="text"
                 placeholder="Enter source of image e.g from Pixabay"
                 className="input stroke"
                 label="Featured Image (Image Source)"
-                error={errors && errors.featuredImageSource}
+                error={errors.featuredImageSource && errors.featuredImageSource.message}
                 onInput={(e) => setImageSource(e.target.value)}
                 {...register("featuredImageSource", { required: false })}
             />
